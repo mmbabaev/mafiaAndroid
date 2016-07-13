@@ -33,6 +33,8 @@
         android:id="@+id/editText"
         android:hint="Ваше имя"
         android:backgroundTint="@color/white"
+        android:textColor="@color/white"
+        android:text="имя"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
     <Button
