@@ -1,6 +1,4 @@
-package mbabaev.mafiaapp;
-
-import android.content.Context;
+package mbabaev.mafiaapp.controllers;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -24,6 +22,8 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import mbabaev.mafiaapp.R;
+import mbabaev.mafiaapp.Utils;
 import mbabaev.mafiaapp.model.MafiaApi;
 
 
