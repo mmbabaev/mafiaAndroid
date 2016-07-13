@@ -13,7 +13,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="78dp"
-        android:id="@+id/description"
+        android:id="@+id/user_name_in_voting_list"
         android:textStyle="bold"
         android:gravity="center"
         android:textColor="@color/black"
