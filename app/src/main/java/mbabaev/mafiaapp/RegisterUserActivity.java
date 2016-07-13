@@ -3,11 +3,11 @@ package mbabaev.mafiaapp;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class Mafia extends AppCompatActivity {
+public class RegisterUserActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.join_game);
+        setContentView(R.layout.register_user);
     }
 }
