@@ -81,6 +81,10 @@ public class RegisterUserActivity extends AppCompatActivity {
                 queue.add(jsObjRequest);
             }
         });
+
+        if (!Utils.getUserId(this).equals("0")) {
+            showJoinActivity();
+        }
     }
 
     public void showJoinActivity() {

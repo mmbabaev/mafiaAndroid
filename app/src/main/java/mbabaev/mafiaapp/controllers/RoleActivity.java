@@ -1,5 +1,6 @@
 package mbabaev.mafiaapp.controllers;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,8 +12,8 @@ import mbabaev.mafiaapp.Utils;
 
 public class RoleActivity extends AppCompatActivity {
     @Override
-    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.role_card);
 
         ImageButton button = (ImageButton) findViewById(R.id.role_card_button);
@@ -24,7 +25,9 @@ public class RoleActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finishActivity(RESULT_OK);
+                Intent intent = new Intent();
+                setResult(0, intent);
+                finish();
             }
         });
     }

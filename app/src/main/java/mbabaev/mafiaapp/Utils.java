@@ -6,6 +6,8 @@ import android.preference.PreferenceManager;
 import android.widget.Toast;
 
 public class Utils {
+    static public int dayCount = 0;
+
     public static void showError(Context context) {
         Toast.makeText(context, "Произошла ошибка!", Toast.LENGTH_SHORT).show();
     }
@@ -27,5 +29,9 @@ public class Utils {
     public static String getRole(Context context) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         return prefs.getString("role", "");
+    }
+
+    public static Boolean isMafia(Context context) {
+        return getRole(context).equals("mafia");
     }
 }

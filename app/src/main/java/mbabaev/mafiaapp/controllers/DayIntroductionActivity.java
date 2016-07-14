@@ -37,9 +37,10 @@ public class DayIntroductionActivity extends AppCompatActivity implements Waiter
     RequestQueue queue;
 
     @Override
-    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.day_introduction);
+        queue = Volley.newRequestQueue(this);
 
         roleButton = (ImageButton) findViewById(R.id.role_butoon_introduction);
         nextButton = (Button) findViewById(R.id.next_button_introduction);
@@ -48,13 +49,15 @@ public class DayIntroductionActivity extends AppCompatActivity implements Waiter
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(DayIntroductionActivity.this, RoleActivity.class);
-                startActivityForResult(intent, RESULT_OK);
+                startActivityForResult(intent, 0);
             }
         });
 
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                sendFinish();
+
                 ProgressDialog dialog = ProgressDialog.show(DayIntroductionActivity.this, "",
                         "Ждем начала ночи", true);
                 WaitTask waitTask = new WaitTask("waiting_for_night", DayIntroductionActivity.this, queue, DayIntroductionActivity.this);
@@ -94,10 +97,39 @@ public class DayIntroductionActivity extends AppCompatActivity implements Waiter
         });
 
         queue.add(jsObjRequest);
+
+
     }
 
     @Override
     public void waitingEnd(JSONObject response) {
-        Toast.makeText(this, "КОНЕЦ ЗНАКОМСТВА", Toast.LENGTH_LONG);
+        Intent intent = new Intent(this, NightActivity.class);
+        startActivity(intent);
+    }
+
+    public void sendFinish() {
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("join_id", Utils.getJoinId(DayIntroductionActivity.this));
+        String method = "finish_introduction";
+        String url = MafiaApi.makeUrl(method, params);
+        JsonObjectRequest jsObjRequest = new JsonObjectRequest(Request.Method.GET, url, null, new Response.Listener<JSONObject>() {
+
+            @Override
+            public void onResponse(JSONObject response) {
+                try {
+                    response.getString("result");
+                }
+                catch (Exception ex) {
+                    ex.printStackTrace();
+                    Utils.showError(DayIntroductionActivity.this);
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Utils.showError(DayIntroductionActivity.this);
+            }
+        });
+        queue.add(jsObjRequest);
     }
 }

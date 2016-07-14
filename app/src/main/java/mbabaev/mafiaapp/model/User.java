@@ -3,6 +3,7 @@ package mbabaev.mafiaapp.model;
 /**
  * Created by Sammy on 14.07.16.
  */
+
 public class User {
 
     public User(String name, boolean is_alive, String role, String image_url, int id) {

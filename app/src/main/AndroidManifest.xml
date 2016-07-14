@@ -18,8 +18,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".controllers.JoinToGameActivity"></activity>
-        <activity android:name=".controllers.RoleActivity"/>
-        <activity android:name=".controllers.DayIntroductionActivity"/>
+        <activity android:name=".controllers.RoleActivity"></activity>
+        <activity android:name=".controllers.DayIntroductionActivity"></activity>
+        <activity android:name=".controllers.NightIntroductionActivity"></activity>
+        <activity android:name=".controllers.NightActivity"></activity>
+        <activity android:name=".controllers.DayActivity"></activity>
     </application>
 
 </manifest>

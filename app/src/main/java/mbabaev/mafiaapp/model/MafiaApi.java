@@ -6,13 +6,13 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONObject;
 
 import java.util.Dictionary;
+import java.util.List;
 import java.util.Map;
 
 public class MafiaApi {
     static public String url = "http://sammycolt.pythonanywhere.com/api/phone/";
     static public String userId = "user_id";
-    
-    
+
 
     static public String makeUrl(String method, Map<String, String> params) {
         String result = url + method + "?";
@@ -33,5 +33,9 @@ public class MafiaApi {
         catch(Exception ex) {
             return false;
         }
+    }
+
+    static public List<User> getUsersFromJson() {
+        return null;
     }
 }
